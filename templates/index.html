@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Nothing to show</h2>
+<a href="{% url 'todo_app:create_todo' %}">Create Todo</a>
+{% include 'todos.html' %}
 {% endblock content %}

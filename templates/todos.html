@@ -1,0 +1,13 @@
+<h2>Your Todos</h2>
+<ul>
+    {% for todo in todos %}
+    <ul>
+        <li>Title: {{ todo.title }}</li>
+        <li>Description: {{ todo.description }}</li>
+        <li>Status: <input type="checkbox" name="status" {% if todo.completed %} checked {% endif %} disabled></li>
+    </ul><br>
+
+    {% empty %}
+        <li>No todos available</li>
+    {% endfor %}
+</ul>

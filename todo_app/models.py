@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Todo(models.Model):
+class TodoModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="todos")
-    title = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000)
+    title = models.CharField(max_length=50, blank=False)
+    description = models.TextField(max_length=1000, blank=False)
+    completed = models.BooleanField(default=False)
     due_date = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
