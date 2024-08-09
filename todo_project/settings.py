@@ -6,7 +6,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(".env")
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or get_random_secret_key()
+SECRET_KEY = "-5l!2lqk%89ut6(qu+o%ky2d9r7i!zy37(q(eiyfs7$$)@=fd7"
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 SECURE_HSTS_SECONDS = 31536000
 SECURE_SSL_REDIRECT = not DEBUG
