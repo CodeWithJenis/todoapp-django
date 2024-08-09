@@ -60,12 +60,16 @@ WSGI_APPLICATION = "todo_project.wsgi.application"
 
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"), conn_max_age=300
-    )
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("PGNAME"),
+        "USER": os.environ.get("PGUSER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": "localhost" if DEBUG else os.environ.get("PGHOST"),
+        "PORT": os.environ.get("5432"),
+    }
 }
-}
-print(DATABASES)
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
