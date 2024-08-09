@@ -15,7 +15,7 @@ CSRF_COOKIE_SECURE = not DEBUG
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
 
 
 INSTALLED_APPS = [
@@ -62,13 +62,16 @@ WSGI_APPLICATION = "todo_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DBNAME"),
-        "USER": os.environ.get("USERNAME"),
-        "PASSWORD": os.environ.get("PASSWORD"),
-        "HOST": "localhost" if DEBUG else os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT"),
+        "URL": os.getenv("POSTGRES_URL"),
+        "NAME": os.getenv("PGNAME"),
+        "USER": os.getenv("PGUSER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("PGHOST"),
+        "PORT": os.getenv("PGPORT"),
     }
 }
+
+print(DATABASES)
 
 
 AUTH_PASSWORD_VALIDATORS = [
