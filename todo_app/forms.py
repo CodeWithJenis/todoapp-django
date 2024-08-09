@@ -19,10 +19,20 @@ class TodoForm(ModelForm):
             ),
             "due_date": forms.DateTimeInput(
                 attrs={
-                    "placeholder": "select due date and time",
                     "class": "form-control",
                     "type": "datetime-local",
                 }
             ),
         }
-        fields = ["title", "description", "completed", "due_date"]
+        fields = ["title", "description", "due_date"]
+        labels = {
+            "title": "Title",
+            "description": "Description",
+            "due_date": "Due date",
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Customize the error message for each required field
+        for field in self.fields.values():
+            field.error_messages = {"required": "*"}

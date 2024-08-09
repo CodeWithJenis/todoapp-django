@@ -1,0 +1,13 @@
+<li class="todo-item">
+    <h3 class="todo-title">{{ todo.title }}</h3>
+    <div class="todo-props">
+        <p class="todo-status">Status: <span class="status-label {{ todo.get_completed_display|lower }}">{{ todo.get_completed_display }}</span></p>
+        <p class="todo-due-date">Due Date: <span class="due-date">{{ todo.due_date }}</span></p>
+        <form action="{% url 'todo_app:edit_todo' todo.id %}" method="get">
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+    <div class="todo-description">
+        <p>{{ todo.description }}</p>
+    </div>
+</li>

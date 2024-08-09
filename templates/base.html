@@ -4,19 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'global/base.css' %}">
+    {% block css_file %}
+    {% endblock css_file %}
 </head>
 <body>
-{% if user.is_authenticated %}
-<p>Hello, {{ user.username }}</p>
-<form action="{% url 'authentication:logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
-{% else %}
-<a href="{% url 'authentication:login' %}">Login</a>
-<a href="{% url 'authentication:register' %}">Register</a>
-{% endif %}
-<h1 style="text-align: center;">Todo App</h1>
-{% block content %}{% endblock content %}
+    <header>
+        <div class="header-content">
+            <h1 class="title title-1 main-title link-like navigate-home" data-home-url="{% url 'todo_app:home' %}">Todo App</h1>
+            <div class="auth-links">
+                {% if user.is_authenticated %}
+                    <p>Hello,{{ user.username|capfirst }}</p>
+                    <form action="{% url 'authentication:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <div>
+                        <button><a href="{% url 'authentication:login' %}">Login</a></button>
+                        <button><a href="{% url 'authentication:register' %}">Register</a></button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+
+    <footer>
+        <p></p>
+    </footer>
+    
+    <script>
+      document.querySelector('.navigate-home').addEventListener('click', function() {
+        window.location.href = "{% url 'todo_app:home' %}";
+      });
+    </script>
 </body>
+{% block script %}
+{% endblock script %}
 </html>

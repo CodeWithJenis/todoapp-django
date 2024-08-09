@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'todo_app/index.css' %}">
+{% endblock css_file %}
 {% block content %}
-<a href="{% url 'todo_app:create_todo' %}">Create Todo</a>
+<section>
+    <form action="{% url 'todo_app:create_todo' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="add-todo"><img src="{% static 'images/add.svg' %}" alt=""></button>
+    </form>
+    
+</section>
 {% include 'todos.html' %}
 {% endblock content %}

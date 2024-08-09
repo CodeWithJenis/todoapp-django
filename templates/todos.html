@@ -1,13 +1,8 @@
-<h2>Your Todos</h2>
-<ul>
+<h2 class="todo-header-title">Your Todos</h2>
+<ul class="todo-items">
     {% for todo in todos %}
-    <ul>
-        <li>Title: {{ todo.title }}</li>
-        <li>Description: {{ todo.description }}</li>
-        <li>Status: <input type="checkbox" name="status" {% if todo.completed %} checked {% endif %} disabled></li>
-    </ul><br>
-
+    {% include 'todo_item.html' with todo=todo %}
     {% empty %}
-        <li>No todos available</li>
+    <li class="no-todos">No todos available</li>
     {% endfor %}
 </ul>

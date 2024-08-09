@@ -1,8 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="{% url 'todo_app:create_todo' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button type="submit">Create Todo</button>
-</form>
+<div class="form-container">
+    <form class="create-todo-form" action="{% url 'todo_app:create_todo' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <div>
+            <button id="create-todo" type="submit">Create Todo</button>
+        </div>
+    </form>
+</div>
+<div>
+    <button id="cancel-todo" class="cancel-button" type="button"><a href="{% url 'todo_app:home' %}">Cancel</a></button>
+</div>
 {% endblock content %}
+{% block script %}
+<script>
+    function adjustCancelButton() {
+        const createBtn = document.querySelector("#create-todo");
+        const cancelBtn = document.querySelector("#cancel-todo");
+
+        if (createBtn && cancelBtn) {
+            const rect = createBtn.getBoundingClientRect();
+            
+            cancelBtn.style.width = `${rect.width}px`;
+            cancelBtn.style.height = `${rect.height}px`;
+            
+            cancelBtn.style.display = "block"
+            cancelBtn.style.margin = "auto"
+        }
+    }
+
+    window.onload = adjustCancelButton;
+    window.onresize = adjustCancelButton;
+</script>
+{% endblock script %}
+

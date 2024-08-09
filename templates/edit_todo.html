@@ -1,1 +1,16 @@
-<form action="{% url 'todo_app:edit_todo' %}" method="post"></form>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">Edit Todo</h1>
+
+<div class="form-container">
+    <form method="post" action="{% url 'todo_app:edit_todo' todo_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+        <button><a href="{% url 'todo_app:home' %}">Cancel</a></button>
+    </form>
+</div>
+
+
+{% endblock %}

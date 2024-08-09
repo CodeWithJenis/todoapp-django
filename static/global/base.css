@@ -1,0 +1,342 @@
+:root {
+    --font-size-root: 16px;
+    --font-size-root-sm: 12px;
+    --bg-color: hsl(0, 0%, 16%);
+    --text-color: #dcdcdc;
+    --link-color: white;
+    --button-bg-color: #007bff;
+    --button-hover-bg-color: #0069d9;
+    --button-border-color: #007bff;
+    --button-hover-border-color: #0062cc;
+    --button-focus-shadow: rgba(38, 143, 255, 0.5);
+    --form-control-bg: #fff;
+    --form-control-border-color: #ced4da;
+    --form-control-text-color: #495057;
+    --form-control-focus-shadow: rgba(0, 123, 255, 0.25);
+    --main-title-color: #282828;
+    --main-title-shadow-color: white;
+}
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+    
+html {
+    font-size: var(--font-size-root);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body {
+    font-size: 1rem;
+    background: linear-gradient(135deg, #282828 0%, #3a3a3a 50%, #1a1a1a 100%);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.cancel-button a {
+    display: block;
+}
+
+.cancel-button {
+    color: #ffffff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    font-weight: bolder;
+}
+
+.cancel-button:hover {
+    color: #ffffff;
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.cancel-button:focus, .cancel-button.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+
+.cancel-button.disabled, .cancel-button:disabled {
+    color: #ffffff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    color: #fff;
+    background-color: var(--button-bg-color);
+    border-color: var(--button-border-color);
+}
+
+button:hover {
+    color: #fff;
+    background-color: var(--button-hover-bg-color);
+    border-color: var(--button-hover-border-color);
+    cursor: pointer;
+}
+
+button:focus, button.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem var(--button-focus-shadow);
+            box-shadow: 0 0 0 0.2rem var(--button-focus-shadow);
+}
+
+button.disabled, button:disabled {
+    color: #fff;
+    background-color: var(--button-bg-color);
+    border-color: var(--button-border-color);
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    margin-bottom: 2vmax;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--form-control-text-color);
+    background-color: var(--form-control-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--form-control-border-color);
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: var(--form-control-text-color);
+    background-color: var(--form-control-bg);
+    border-color: var(--button-bg-color);
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem var(--form-control-focus-shadow);
+            box-shadow: 0 0 0 0.2rem var(--form-control-focus-shadow);
+}
+
+.form-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: large;
+}
+
+.form-container .create-todo-form, .login-register{
+    width: min(500px, 85vw);
+}
+
+.login-register {
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+
+.login-register > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 1rem;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.login-register > div {
+    margin-top: 5vh;
+}
+
+.login-register button {
+    width: 80%;
+    margin: 2rem 0;
+}
+
+.login-register > div > input {
+    width: 80%;
+    padding: 1.3rem;
+    -ms-flex-item-align: baseline;
+        align-self: baseline;
+    font-size: 1.2rem;
+    border-radius: 1vmin;
+}
+
+.login-register > div > label {
+    -ms-flex-item-align: baseline;
+        align-self: baseline;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-container .create-todo-form button {
+    width: 100%;
+}
+
+.errorlist {
+    display: inline-block;
+    padding: 0;
+    margin-top: 5px;
+    position: relative;
+    color: #f87171;
+    width: 100%;
+}
+
+.errorlist li {
+    position: absolute;
+    top: 50%;
+    font-weight: 800;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: var(--font-size-root-sm);
+    }
+}
+
+footer {
+    text-align: center;
+    position: -webkit-sticky;
+    position:sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.header-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 0 1rem;
+    background-color: #282828;
+    border-bottom: 1px solid #444;
+}
+
+
+
+
+.auth-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.auth-links a,
+.auth-links button {
+    font-size: 1.2rem;
+    color: #f1f1f1;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s ease, background-color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.auth-links a {
+    display: block;
+    padding: 0.5rem 1.2rem;
+}
+
+.auth-links a:hover,
+.auth-links button:hover {
+    color: #b3b3b3;
+}
+
+.auth-links button {
+    background-color: #444;
+    color: #f1f1f1;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.auth-links button:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.auth-links p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #E0E0E0;
+    font-family: monospace; 
+}
+
+.link-like {
+    cursor: pointer;
+}
+
+.main-title {
+    color: #ff6347;
+    -webkit-transition: color 0.2s;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+.main-title:hover {
+    color: #fff;
+}
