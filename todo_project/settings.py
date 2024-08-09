@@ -2,6 +2,7 @@ from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,7 +17,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 
 ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
-
 
 INSTALLED_APPS = [
     "todo_app",
@@ -60,19 +60,10 @@ WSGI_APPLICATION = "todo_project.wsgi.application"
 
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "URL": os.getenv("POSTGRES_URL"),
-        "NAME": os.getenv("PGNAME"),
-        "USER": os.getenv("PGUSER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("PGHOST"),
-        "PORT": os.getenv("PGPORT"),
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"), conn_max_age=300
+    )
 }
-
-print(DATABASES)
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
