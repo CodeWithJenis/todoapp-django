@@ -2,7 +2,6 @@ from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,7 +15,8 @@ CSRF_COOKIE_SECURE = not DEBUG
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
+ALLOWED_HOSTS = []
+
 
 INSTALLED_APPS = [
     "todo_app",
@@ -64,6 +64,8 @@ DATABASES = {
         default=os.environ.get("DATABASE_URL"), conn_max_age=300
     )
 }
+}
+print(DATABASES)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
