@@ -18,7 +18,7 @@
                     <p>Hello,{{ user.username|capfirst }}</p>
                     <form action="{% url 'authentication:logout' %}" method="post">
                         {% csrf_token %}
-                        <button type="submit">Logout</button>
+                        <button style="padding: 0.5rem 1rem;" type="submit">Logout</button>
                     </form>
                 {% else %}
                     <div>

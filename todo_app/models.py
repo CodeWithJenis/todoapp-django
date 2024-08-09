@@ -31,5 +31,6 @@ class TodoModel(models.Model):
         return self.title
 
     class Meta:
+        db_table = "todo_table"
         verbose_name = "Todo Item"
         verbose_name_plural = "Todo Items"
