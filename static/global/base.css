@@ -42,29 +42,29 @@ ul {
     list-style-type: none;
 }
 
-.cancel-button a {
+.danger, .cancel-button a {
     display: block;
 }
 
-.cancel-button {
+.danger, .cancel-button {
     color: #ffffff;
     background-color: #dc3545;
     border-color: #dc3545;
     font-weight: bolder;
 }
 
-.cancel-button:hover {
+.danger:hover, .cancel-button:hover {
     color: #ffffff;
     background-color: #c82333;
     border-color: #bd2130;
 }
 
-.cancel-button:focus, .cancel-button.focus {
+.danger:focus, .cancel-button:focus, .cancel-button.focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
             box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
 }
 
-.cancel-button.disabled, .cancel-button:disabled {
+.danger:disabled, .cancel-button.disabled, .cancel-button:disabled {
     color: #ffffff;
     background-color: #dc3545;
     border-color: #dc3545;

@@ -1,6 +1,6 @@
 from .forms import TodoForm
 from .models import TodoModel, Status
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .status_checker import check_status
@@ -63,3 +63,12 @@ def edit_todo(request: HttpRequest, todo_id):
         form = TodoForm(instance=instance)
 
     return render(request, "edit_todo.html", {"form": form, "todo_id": todo_id})
+
+
+@login_required
+def delete_todo(request: HttpRequest, todo_id):
+    todo_obj: TodoModel = TodoModel.objects.get(id=todo_id)
+    if todo_obj.user != request.user:
+        return HttpResponseForbidden("You have no permission to delete this todo")
+    todo_obj.delete()
+    return redirect("todo_app:home")
