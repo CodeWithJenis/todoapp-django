@@ -1,6 +1,7 @@
 from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,17 +60,17 @@ TEMPLATES = [
 WSGI_APPLICATION = "todo_project.wsgi.application"
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("PGNAME"),
-        "USER": os.environ.get("PGUSER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": "localhost" if DEBUG else os.environ.get("PGHOST"),
-        "PORT": os.environ.get("5432"),
-    }
-}
-
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.environ.get("PGNAME"),
+#         "USER": os.environ.get("PGUSER"),
+#         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+#         "HOST": "localhost" if DEBUG else os.environ.get("PGHOST"),
+#         "PORT": os.environ.get("5432"),
+#     }
+# }
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,7 +100,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
+MEDIA_URL = "media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "todo_app:home"
